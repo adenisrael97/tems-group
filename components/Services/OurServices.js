@@ -2,6 +2,8 @@
 import { FaQuoteLeft, FaChevronLeft, FaChevronRight, FaChevronDown } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Button from "@/components/ui/Button";
+import Card, { CardContent } from "@/components/ui/Card";
 const testimonials = [
     { name: "Jane Doe", company: "Acme Corp", quote: "TEMS-Group exceeded our expectations with their professionalism and quality workmanship." },
     { name: "John Smith", company: "Smith Holdings", quote: "Their team delivered our project on time and on budget. Highly recommended!" },
@@ -142,28 +144,29 @@ export default function OurServices() {
                                 <span className="mb-2">{service.icon}</span>
                                 <h4 className="font-bold text-2xl text-yellow-700 mb-2">{service.title}</h4>
                                 <p className="text-gray-700 text-base mb-4 max-w-md">{service.description}</p>
-                                <a
+                                <Button
                                     href="/contact"
-                                    className="inline-block bg-yellow-600 hover:bg-yellow-700 text-white font-bold px-6 py-2 rounded-full shadow transition-colors duration-200 text-base focus:outline-none focus:ring-2 focus:ring-yellow-700"
+                                    variant="primary"
+                                    size="sm"
                                     aria-label={`Get quote for ${service.title}`}
                                 >
                                     Get Quote
-                                </a>
+                                </Button>
                             </div>
                             {/* Card: image + project types */}
-                            <motion.div
+                            <Card
                                 initial={{ opacity: 0, y: 40 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.6, delay: idx * 0.1 }}
                                 tabIndex={0}
                                 aria-label={service.title + ' project types'}
-                                className="flex-1 bg-yellow-50 rounded-2xl shadow-lg border-t-4 border-yellow-400 focus:ring-4 focus:ring-yellow-300 outline-none group hover:scale-[1.03] hover:shadow-2xl transition-all duration-300 flex flex-col"
+                                className="flex-1 bg-yellow-50 border-t-4 border-yellow-400 focus:ring-4 focus:ring-yellow-300 outline-none group hover:scale-[1.03] flex flex-col"
                             >
                                 <div className="w-full h-48 bg-yellow-200 rounded-t-2xl flex items-center justify-center overflow-hidden">
                                     <Image src="/image/service-placeholder.jpg" alt={service.title + ' project example'} width={400} height={192} className="object-cover w-full h-full" />
                                 </div>
-                                <div className="p-6 flex flex-col justify-center h-full">
+                                <CardContent className="p-6 flex flex-col justify-center h-full">
                                     <h5 className="font-bold text-yellow-700 text-lg mb-3 text-center">Project Types</h5>
                                     <ul className="text-gray-700 text-sm space-y-2">
                                         {service.projects.map((proj) => (
@@ -173,20 +176,21 @@ export default function OurServices() {
                                             </li>
                                         ))}
                                     </ul>
-                                </div>
-                            </motion.div>
+                                </CardContent>
+                            </Card>
                         </div>
                     ))}
                 </div>
                         {/* Contact Us Button */}
                         <div className="w-full flex justify-center mt-10">
-                            <a
+                            <Button
                                 href="/contact"
-                                className="bg-yellow-600 hover:bg-yellow-700 text-white font-bold px-8 py-3 rounded-full shadow-lg text-lg transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-yellow-300"
+                                variant="primary"
+                                size="lg"
                                 aria-label="Contact TEMS-Group"
                             >
                                 Contact Us
-                            </a>
+                            </Button>
                         </div>
 
                         {/* Process Timeline */}
@@ -240,20 +244,22 @@ export default function OurServices() {
                                         </div>
                                     </motion.div>
                                     <div className="flex gap-4 mt-6">
-                                        <button
+                                        <Button
                                             onClick={prevTestimonial}
-                                            className="bg-yellow-200 hover:bg-yellow-400 text-yellow-700 rounded-full p-2 focus:outline-none focus:ring-2 focus:ring-yellow-700"
+                                            variant="soft-yellow"
+                                            size="icon"
                                             aria-label="Previous testimonial"
                                         >
                                             <FaChevronLeft />
-                                        </button>
-                                        <button
+                                        </Button>
+                                        <Button
                                             onClick={nextTestimonial}
-                                            className="bg-yellow-200 hover:bg-yellow-400 text-yellow-700 rounded-full p-2 focus:outline-none focus:ring-2 focus:ring-yellow-700"
+                                            variant="soft-yellow"
+                                            size="icon"
                                             aria-label="Next testimonial"
                                         >
                                             <FaChevronRight />
-                                        </button>
+                                        </Button>
                                     </div>
                                 </div>
                             </div>
@@ -277,17 +283,19 @@ export default function OurServices() {
                                                 tabIndex={0}
                                                 aria-label={`FAQ: ${faq.q}`}
                                             >
-                                                <button
-                                                    className={`w-full flex items-center justify-between px-6 py-5 bg-white focus:outline-none focus:ring-2 focus:ring-yellow-700 transition-colors duration-200 cursor-pointer group ${isOpen ? 'bg-yellow-50' : 'hover:bg-yellow-100'}`}
+                                                <Button
+                                                    variant="ghost"
+                                                    rounded="lg"
                                                     onClick={() => toggleFaq(idx)}
                                                     aria-expanded={isOpen}
                                                     aria-controls={`faq-content-${idx}`}
+                                                    className={`w-full flex items-center justify-between px-6 py-5 rounded-none focus:ring-yellow-700 cursor-pointer group ${isOpen ? 'bg-yellow-50' : 'hover:bg-yellow-100'}`}
                                                 >
                                                     <span className="font-bold text-yellow-700 text-left text-base md:text-lg group-hover:text-yellow-800 transition-colors duration-200">{faq.q}</span>
                                                     <span className={`ml-4 transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
                                                         <FaChevronDown className="text-yellow-600 text-xl" />
                                                     </span>
-                                                </button>
+                                                </Button>
                                                 <div
                                                     id={`faq-content-${idx}`}
                                                     className={`grid transition-all duration-300 ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'} bg-yellow-50`}

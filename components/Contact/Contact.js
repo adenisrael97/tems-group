@@ -1,6 +1,7 @@
 "use client";
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaClock, FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import { useState } from "react";
+import Button from "@/components/ui/Button";
 
 export default function Contact() {
     const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
@@ -99,13 +100,16 @@ export default function Contact() {
                             className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 text-gray-900 bg-white resize-none"
                         />
                         <div className="flex justify-center">
-                            <button
+                            <Button
                                 type="submit"
+                                variant="primary"
+                                size="md"
+                                loading={sending}
                                 disabled={sending}
-                                className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold px-6 py-2 rounded-full shadow-md transition-colors duration-200 text-base focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 focus:ring-offset-white disabled:opacity-60 disabled:cursor-not-allowed mt-2"
+                                className="mt-2"
                             >
-                                {sending ? "Sending..." : sent ? "Message Sent!" : "Send Message"}
-                            </button>
+                                {sent ? "Message Sent!" : "Send Message"}
+                            </Button>
                         </div>
                     </form>
                 </div>

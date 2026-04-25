@@ -7,6 +7,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaPhone, FaEnvelope, FaBars, FaTimes, FaHardHat } from "react-icons/fa";
+import Button from "@/components/ui/Button";
 
 /* ============================================================
    NAVIGATION LINKS
@@ -139,18 +140,17 @@ export default function Navbar() {
 
             {/* ===== CTA BUTTON (Desktop) ===== */}
             <div className="hidden lg:flex items-center gap-4">
-              <Link
-                href="/contact"
-                className="px-6 py-2.5 bg-yellow-500 text-black font-semibold rounded-full hover:bg-yellow-400 active:bg-yellow-600 transition-colors shadow-md hover:shadow-lg"
-              >
+              <Button href="/contact" variant="primary" size="sm">
                 Get a Quote
-              </Link>
+              </Button>
             </div>
 
             {/* ===== MOBILE MENU BUTTON ===== */}
-            <button
+            <Button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden w-10 h-10 flex items-center justify-center text-gray-700 hover:text-yellow-500 transition-colors"
+              variant="ghost"
+              size="icon"
+              className="lg:hidden w-10 h-10"
               aria-label={isOpen ? "Close menu" : "Open menu"}
             >
               {isOpen ? (
@@ -158,7 +158,7 @@ export default function Navbar() {
               ) : (
                 <FaBars className="text-xl" />
               )}
-            </button>
+            </Button>
           </div>
         </nav>
 
@@ -199,13 +199,14 @@ export default function Navbar() {
 
                 {/* Mobile CTA */}
                 <div className="mt-4 pt-4 border-t border-gray-100">
-                  <Link
+                  <Button
                     href="/contact"
+                    variant="primary"
                     onClick={closeMenu}
-                    className="block w-full py-3 bg-yellow-500 text-black text-center font-semibold rounded-full hover:bg-yellow-400 active:bg-yellow-600 transition-colors"
+                    className="w-full"
                   >
                     Get a Quote
-                  </Link>
+                  </Button>
                 </div>
 
                 {/* Mobile Contact Info */}

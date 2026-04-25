@@ -7,6 +7,8 @@ import {
   FaRoad,
   FaTools,
 } from "react-icons/fa";
+import Button from "@/components/ui/Button";
+import Card, { CardContent } from "@/components/ui/Card";
 
 /* ================================
    SERVICES DATA (EDIT HERE)
@@ -82,32 +84,34 @@ export default function ServicesSection() {
             const Icon = service.icon;
 
             return (
-              <motion.article
+              <Card
                 key={service.title}
                 custom={index}
                 variants={cardVariants}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                className="bg-white rounded-2xl p-6 text-center shadow-md hover:shadow-xl transition"
+                className="text-center"
               >
-                {/* Icon */}
-                <div className="flex justify-center mb-4">
-                  <div className="bg-yellow-400 text-black p-4 rounded-full">
-                    <Icon size={32} aria-hidden="true" />
+                <CardContent className="p-6">
+                  {/* Icon */}
+                  <div className="flex justify-center mb-4">
+                    <div className="bg-yellow-400 text-black p-4 rounded-full">
+                      <Icon size={32} aria-hidden="true" />
+                    </div>
                   </div>
-                </div>
 
-                {/* Title */}
-                <h3 className="text-xl font-semibold text-black mb-2">
-                  {service.title}
-                </h3>
+                  {/* Title */}
+                  <h3 className="text-xl font-semibold text-black mb-2">
+                    {service.title}
+                  </h3>
 
-                {/* Description */}
-                <p className="text-gray-600 text-sm">
-                  {service.description}
-                </p>
-              </motion.article>
+                  {/* Description */}
+                  <p className="text-gray-600 text-sm">
+                    {service.description}
+                  </p>
+                </CardContent>
+              </Card>
             );
           })}
         </div>
@@ -119,14 +123,10 @@ export default function ServicesSection() {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="flex justify-center mt-16"
         >
-          <a
-            href="/services"
-            className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-yellow-500 text-black font-semibold text-lg shadow-lg border-2 border-yellow-500 hover:bg-black hover:text-yellow-400 hover:border-black transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2"
-            aria-label="View all services"
-          >
+          <Button href="/services" variant="primary" aria-label="View all services">
             <span>View All Services</span>
             <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-          </a>
+          </Button>
         </motion.div>
       </div>
     </section>

@@ -1,6 +1,7 @@
 "use client";
 import { FaFacebookF, FaLinkedinIn, FaTwitter, FaInstagram } from "react-icons/fa";
 import Link from "next/link";
+import Button from "@/components/ui/Button";
 
 export default function Footer() {
     return (
@@ -51,12 +52,9 @@ export default function Footer() {
                             placeholder="Your email address"
                             className="w-full px-4 py-2 rounded-full font-thin bg-gray-900 text-white placeholder-gray-400 border border-gray-700 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 outline-none transition"
                         />
-                        <button
-                            type="submit"
-                            className="px-6 py-2 rounded-full bg-yellow-500 text-black font-semibold hover:bg-yellow-400 focus:bg-yellow-400 active:bg-yellow-600 transition-colors shadow-md"
-                        >
+                        <Button type="submit" variant="primary" size="sm">
                             Subscribe
-                        </button>
+                        </Button>
                     </form>
                 </div>
 

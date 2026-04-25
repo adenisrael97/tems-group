@@ -2,6 +2,7 @@
 "use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Button from "@/components/ui/Button";
 
 export default function HeroSection() {
   return (
@@ -59,18 +60,12 @@ export default function HeroSection() {
           transition={{ duration: 0.7, delay: 0.8 }}
           className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center md:justify-start"
         >
-          <a
-            href="#contact"
-            className="px-8 py-3 rounded-full bg-yellow-500 text-black font-bold text-lg shadow-md hover:bg-yellow-400 active:bg-yellow-600 transition-all text-center"
-          >
+          <Button href="#contact" variant="primary" size="lg">
             Get a Quote
-          </a>
-          <a
-            href="#projects"
-            className="px-8 py-3 rounded-full border-2 border-white text-white font-bold text-lg shadow-md hover:bg-white hover:text-black transition-all text-center"
-          >
+          </Button>
+          <Button href="#projects" variant="outline-white" size="lg">
             Our Projects
-          </a>
+          </Button>
         </motion.div>
       </div>
 

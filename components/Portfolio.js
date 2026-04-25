@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FaMapMarkerAlt, FaRulerCombined, FaCalendarAlt, FaArrowRight } from "react-icons/fa";
+import Button from "@/components/ui/Button";
+import Card, { CardContent, CardFooter } from "@/components/ui/Card";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -126,17 +128,23 @@ export default function Portfolio() {
           </div>
 
           {/* View All Button */}
-          <motion.button
+          <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="mt-6 md:mt-0 w-full sm:w-auto group flex items-center justify-center gap-2 px-5 sm:px-6 py-3 bg-yellow-500 text-black text-sm sm:text-base font-semibold rounded-full hover:bg-yellow-400 active:bg-yellow-600 transition-all shadow-lg hover:shadow-yellow-500/25"
+            className="mt-6 md:mt-0"
           >
-            View All Projects
-            <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
-          </motion.button>
+            <Button
+              href="/projects"
+              variant="primary"
+              className="group w-full sm:w-auto"
+            >
+              View All Projects
+              <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </motion.div>
         </div>
 
         {/* Projects Grid */}
@@ -148,10 +156,10 @@ export default function Portfolio() {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8"
         >
           {projects.map((project, index) => (
-            <motion.article
+            <Card
               key={index}
               variants={cardVariants}
-              className="group bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100"
+              className="group rounded-xl sm:rounded-2xl shadow-lg hover:shadow-2xl"
             >
               {/* Image Container */}
               <div className="relative h-48 sm:h-56 lg:h-64 overflow-hidden">
@@ -163,15 +171,15 @@ export default function Portfolio() {
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   priority={index < 3}
                 />
-                
+
                 {/* Gradient Overlay */}
                 <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
-                
+
                 {/* Status Badge */}
                 <div className="absolute top-3 left-3 sm:top-4 sm:left-4">
                   <span className={`px-2 sm:px-3 py-1 rounded-full text-[10px] sm:text-xs font-semibold ${
-                    project.status === "Completed" 
-                      ? "bg-green-500 text-white" 
+                    project.status === "Completed"
+                      ? "bg-green-500 text-white"
                       : "bg-yellow-500 text-black"
                   }`}>
                     {project.status}
@@ -198,7 +206,7 @@ export default function Portfolio() {
               </div>
 
               {/* Card Content */}
-              <div className="p-3 sm:p-4 lg:p-5">
+              <CardContent className="p-3 sm:p-4 lg:p-5">
                 {/* Project Details */}
                 <div className="flex items-center justify-between mb-3 sm:mb-4 pb-3 sm:pb-4 border-b border-gray-100">
                   <div className="flex items-center gap-1.5 sm:gap-2 text-gray-600">
@@ -212,12 +220,17 @@ export default function Portfolio() {
                 </div>
 
                 {/* View Details Button */}
-                <button className="w-full py-2.5 sm:py-3 px-3 sm:px-4 bg-gray-900 text-white text-sm sm:text-base font-semibold rounded-lg sm:rounded-xl hover:bg-yellow-500 hover:text-black active:bg-yellow-600 transition-all duration-300 flex items-center justify-center gap-2 group/btn">
+                <Button
+                  href="/projects"
+                  variant="secondary"
+                  rounded="lg"
+                  className="w-full group/btn"
+                >
                   View Project Details
                   <FaArrowRight className="text-xs sm:text-sm group-hover/btn:translate-x-1 transition-transform" />
-                </button>
-              </div>
-            </motion.article>
+                </Button>
+              </CardContent>
+            </Card>
           ))}
         </motion.div>
 
@@ -231,9 +244,9 @@ export default function Portfolio() {
           <p className="text-gray-600 text-sm sm:text-base mb-4">
             Have a project in mind? Let&apos;s bring your vision to life.
           </p>
-          <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-black text-white text-sm sm:text-base font-semibold rounded-full hover:bg-gray-800 active:bg-gray-900 transition-all shadow-lg hover:shadow-xl">
+          <Button href="/contact" variant="secondary" size="lg" className="w-full sm:w-auto">
             Start Your Project
-          </button>
+          </Button>
         </motion.div>
       </div>
     </section>

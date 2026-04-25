@@ -9,6 +9,7 @@ import {
   FaHandshake,
   FaChartLine,
 } from "react-icons/fa";
+import Button from "@/components/ui/Button";
 
 /* ============================================================
    WHY CHOOSE US DATA
@@ -196,21 +197,17 @@ export default function WhyChooseUsSection() {
           
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-6 sm:px-8 py-3 sm:py-4 bg-yellow-500 text-black font-semibold rounded-full hover:bg-yellow-400 active:bg-yellow-600 transition-colors shadow-lg shadow-yellow-500/25"
-            >
-              Get Free Consultation
-            </motion.button>
-            
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-6 sm:px-8 py-3 sm:py-4 bg-black text-white font-semibold rounded-full border-2 border-black hover:bg-gray-800 active:bg-gray-900 transition-all"
-            >
-              View Our Projects
-            </motion.button>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button href="/contact" variant="primary" size="lg">
+                Get Free Consultation
+              </Button>
+            </motion.div>
+
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button href="/projects" variant="secondary" size="lg">
+                View Our Projects
+              </Button>
+            </motion.div>
           </div>
         </motion.div>
       </div>

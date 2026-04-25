@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Button from "@/components/ui/Button";
 
 export default function NextProjectSection() {
   return (
@@ -49,18 +50,12 @@ export default function NextProjectSection() {
           transition={{ duration: 0.7, delay: 0.4 }}
           className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center"
         >
-          <a
-            href="#contact"
-            className="px-8 py-3 rounded-full bg-yellow-500 text-black font-bold text-lg shadow-md hover:bg-yellow-400 active:bg-yellow-600 transition-all text-center"
-          >
+          <Button href="/contact" variant="primary" size="lg">
             Start Your Project
-          </a>
-          <a
-            href="#services"
-            className="px-8 py-3 rounded-full border-2 border-black text-black font-bold text-lg shadow-md hover:bg-black hover:text-white transition-all text-center"
-          >
+          </Button>
+          <Button href="/services" variant="outline" size="lg">
             Get Free Estimate
-          </a>
+          </Button>
         </motion.div>
 
         {/* Decorative Divider */}

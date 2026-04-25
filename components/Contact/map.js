@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Button from "@/components/ui/Button";
 
 const officeAddress = "Plot 12, Industrial Avenue, Victoria Island, Lagos, Nigeria";
 const mapsUrl = "https://www.google.com/maps/search/?api=1&query=Plot+12+Industrial+Avenue+Victoria+Island+Lagos+Nigeria";
@@ -26,13 +27,14 @@ export default function MapSection() {
                     referrerPolicy="no-referrer-when-downgrade"
                 ></iframe>
             </div>
-            <button
-                className="mt-6 px-6 py-2 bg-yellow-500 hover:bg-yellow-600 text-white font-bold rounded-full shadow focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            <Button
+                variant="primary"
+                size="sm"
                 onClick={() => window.open(mapsUrl, "_blank")}
                 aria-label="Open office location in Google Maps"
             >
                 {officeAddress}
-            </button>
+            </Button>
         </div>
     );
 }
